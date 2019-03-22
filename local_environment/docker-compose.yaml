@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  kibana:
+    image: gerritforge/analytics-kibana-6.5.4
+    container_name: "analytics-kibana-6.5.4"
+    networks:
+      - analytics
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+
+  elasticsearch:
+    image: gerritforge/analytics-elasticsearch-6.5.4
+    container_name: "analytics-elasticsearch-6.5.4"
+    networks:
+      - analytics
+    environment:
+      - ES_JAVA_OPTS=-Xmx1g -Xms1g
+      - http.host=0.0.0.0
+      - network.host=_local_
+      - http.publish_host=_local_
+      - http.cors.allow-origin=*
+      - http.cors.enabled=true
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+networks:
+  analytics:
+    driver: bridge

@@ -1,0 +1,8 @@
+FROM docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+
+env XPACK_LICENSE_SELF_GENERATED_TYPE=basic
+env XPACK_ML_ENABLED=false
+env XPACK_MONITORING_ENABLED=false
+env XPACK_SECURITY_ENABLED=false
+env XPACK_SECURITY_AUDIT_ENABLED=false
+env XPACK_WATCHER_ENABLED=false
