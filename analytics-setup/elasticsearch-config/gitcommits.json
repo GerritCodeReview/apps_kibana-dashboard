@@ -1,0 +1,102 @@
+{
+  "index_patterns": [
+    "gitcommits*"
+  ],
+  "settings": {
+    "index": {
+      "number_of_shards": "1"
+    }
+  },
+  "mappings": {
+    "gitCommits": {
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "added_lines": {
+          "type": "long"
+        },
+        "author": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "branches": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "day": {
+          "type": "long"
+        },
+        "deleted_lines": {
+          "type": "long"
+        },
+        "email": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "hour": {
+          "type": "long"
+        },
+        "is_bot_like": {
+          "type": "boolean"
+        },
+        "is_merge": {
+          "type": "boolean"
+        },
+        "last_commit_date": {
+          "type": "date",
+          "format": "epoch_millis"
+        },
+        "month": {
+          "type": "long"
+        },
+        "num_commits": {
+          "type": "long"
+        },
+        "num_distinct_files": {
+          "type": "long"
+        },
+        "num_files": {
+          "type": "long"
+        },
+        "organization": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "project": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "year": {
+          "type": "long"
+        }
+      }
+    }
+  },
+  "aliases": {}
+}
