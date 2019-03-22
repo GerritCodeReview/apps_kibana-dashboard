@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "087bf1ea_7ff0b86b",
+        "filename": "analytics-setup/docker-entrypoint.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-03-22T18:42:28Z",
+      "side": 1,
+      "message": "What happens when we run this multiple times? We should probably make this idempotent.\nWe should also adopt aliases rather than creating directly the indices",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 107
+      },
+      "revId": "b47e3e957ffd7728fc7174ecb9ac010aff458c5d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
