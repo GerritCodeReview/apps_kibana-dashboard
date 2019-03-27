@@ -22,6 +22,30 @@
       "revId": "b47e3e957ffd7728fc7174ecb9ac010aff458c5d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce3cfe76_059b0cad",
+        "filename": "analytics-setup/docker-entrypoint.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2019-03-27T09:12:13Z",
+      "side": 1,
+      "message": "I checked this and it appears to be fine.\nIf you try to create the index twice you will get a `resource_already_exists_exception` and the script will continue.\n\nI have also implemented this using aliases",
+      "parentUuid": "087bf1ea_7ff0b86b",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 107
+      },
+      "revId": "b47e3e957ffd7728fc7174ecb9ac010aff458c5d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
