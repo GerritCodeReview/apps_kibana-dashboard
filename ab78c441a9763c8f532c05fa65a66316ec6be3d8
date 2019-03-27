@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fd50cd8_a950ff27",
+        "filename": "analytics-setup/elasticsearch-config/gitcommits.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-03-27T18:03:00Z",
+      "side": 1,
+      "message": "This seems to be an issue after the spark job is executed, the dashboard stops working.\n\nI\u0027ve checked the spark code and the last_commit_date is a long.\n\nES should be responsible for converting from epoch_millis to a date but that is not happening for some reason.\n\nI\u0027ve tested against the current ETL production code base as well with the new code from change (https://gerrit-review.googlesource.com/c/apps/analytics-etl/+/216673/13)",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "ab78c441a9763c8f532c05fa65a66316ec6be3d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
