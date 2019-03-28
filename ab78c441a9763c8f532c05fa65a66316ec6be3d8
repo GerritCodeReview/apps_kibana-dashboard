@@ -22,6 +22,30 @@
       "revId": "ab78c441a9763c8f532c05fa65a66316ec6be3d8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "565c454b_b72d7844",
+        "filename": "analytics-setup/elasticsearch-config/gitcommits.json",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2019-03-28T10:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd50cd8_a950ff27",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "ab78c441a9763c8f532c05fa65a66316ec6be3d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
