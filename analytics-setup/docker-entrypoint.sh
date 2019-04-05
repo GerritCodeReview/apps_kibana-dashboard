@@ -16,30 +16,42 @@
 
 /wait-for-elasticsearch
 
-echo "* * * * Create elasticsearch indexes @ $ELASTICSEARCH_URL:$ELASTICSEARCH_PORT * * * *"
-for file in `ls -v /elasticsearch-config/*.json`; do
-	echo "--> $file";
-	index_template_name=$(basename $file .json)
-	index_name="${index_template_name}_initial"
-	curl -X PUT -v -H 'Content-Type: application/json' \
-        -d @$file $ELASTICSEARCH_URL:$ELASTICSEARCH_PORT/_template/$index_template_name
+ES_URL="$ELASTICSEARCH_URL:$ELASTICSEARCH_PORT"
 
-	echo "* * * * Creating $index_name index * * * *"
-	curl -XPUT "$ELASTICSEARCH_URL:$ELASTICSEARCH_PORT/$index_name?pretty" -H 'Content-Type: application/json'
+echo "* * * * Create elasticsearch indexes @ $ES_URL * * * *"
+for template_file in `ls -v /elasticsearch-config/*.json`; do
+	echo "--> $template_file";
 
-    curl -XPOST "$ELASTICSEARCH_URL:$ELASTICSEARCH_PORT/_aliases" -H 'Content-Type: application/json' -d"{\"actions\" : [
-            { \"add\" : { \"index\" : \"$index_name\", \"alias\" : \"$index_template_name\" } }
+    index_template=$(basename $template_file .json)
+
+	namespaced_index_name=${index_template}${NAMESPACE}
+	namespaced_initial_index_name="${namespaced_index_name}_initial"
+
+	echo "* * * Creating $index_template index template"
+	curl -X PUT -v -H 'Content-Type: application/json' -d @${template_file} ${ES_URL}/_template/${index_template}
+
+	echo "* * * * Creating $namespaced_initial_index_name index * * * *"
+	curl -XPUT "$ES_URL/$namespaced_initial_index_name?pretty" -H 'Content-Type: application/json'
+
+    echo "* * * * Creating alias $namespaced_index_name -> $namespaced_initial_index_name index * * * *"
+    curl -XPOST "$ES_URL/_aliases" -H 'Content-Type: application/json' -d"{\"actions\" : [
+            { \"add\" : { \"index\" : \"$namespaced_initial_index_name\", \"alias\" : \"$namespaced_index_name\" } }
         ]
     }"
 
 done;
 
-echo "* * * * Input kibana settings @ $ELASTICSEARCH_URL:$ELASTICSEARCH_PORT * * * *"
-for file in `ls -v /kibana-config/*.data.json`; do
-       echo "--> $file";
+echo "* * * * Input kibana settings and visualizations @ $ES_URL [.kibana] * * * *"
+for template_file in `ls -v /kibana-config/*.template.json`; do
+       target=$(mktemp /tmp/kibana-config.XXXXXX);
+
+       echo "* * * * compiling $template_file into $target";
+       envsubst < ${template_file} > ${target};
+
         /usr/lib/node_modules/elasticdump/bin/elasticdump \
-            --output=$ELASTICSEARCH_URL:$ELASTICSEARCH_PORT/.kibana \
-            --input=$file \
+            --output=${ES_URL}/.kibana \
+            --input=${target} \
             --type=data \
             --headers '{"Content-Type": "application/json"}';
+        echo "Done with $template_file";
 done;

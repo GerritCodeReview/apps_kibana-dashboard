@@ -15,6 +15,19 @@ this will start:
 * elasticsearch, bound and exposing port 9200 and 9300
 * kibana, bound and exposing port 5601
 
+and will also configure the dashboard for you so that you already have all the mappings, the kibana settigs and the main
+visualizations and dashboard already configured.
+
+### Multiple dashboards environment
+
+If you want to spin up an environment in which you have multiple kibana dashboards configured,
+you ca run the following:
+
+```bash
+cd local_environmet
+docker-compose -f docker-compose-multi-dashboard.yaml up
+```
+
 ### Build kibana for local environment
 
 The docker-compose relies on an external image (```gerritforge/analytics-kibana-6.5.4``), which is also maintained
