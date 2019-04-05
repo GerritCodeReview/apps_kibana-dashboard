@@ -1,6 +1,6 @@
 # Kibana Dashboard
 
-The goal of this project is to provide the tools to manage and configure a kibana dashboard
+The goal of this project is to provide the tools to manage and configure kibana dashboard(s)
 aimed to visualize analytics on project contributions.
 Kibana configuration is maintained in elasticsearch so, in reality, this project will talk to the elasticsearch
 instance which kibana is connected to.
@@ -25,6 +25,12 @@ this will start:
 * elasticsearch, bound and exposing port 9200 and 9300
 * kibana, bound and exposing port 5601
 
+and will also configure the dashboard for you so that you already have all the mappings, the kibana settigs and the main visualizations and dashboard already configured.
+Just browse to `http://localhost:5601` to see the configured dashboard.
+
+At this point the dashboard will still be empty.
+If you want to populate it with data you might want to run the [GIT commits ETL](https://github.com/GerritCodeReview/apps_analytics-etl#git-commits)
+
 ### Prerequisites
 
 * [docker](https://www.docker.com/)
@@ -34,31 +40,30 @@ this will start:
 ## Restore kibana configuration
 To configure a kibana dashboard you can simply point the setup script to the target elasticsearch as follows
 
-```make restore [ELASTICSEARCH_URL] [ELASTICSEARCH_PORT]```
+```make restore [ELASTICSEARCH_URL] [ELASTICSEARCH_PORT] [NAMESPACE]```
 
 * ELASTICSEARCH_URL: default is `http://host.docker.internal` (the current host running docker)
 * ELASTICSEARCH_PORT: default is 9200
+* NAMESPACE: default is empty.
 
-For example to configure kibana spinned up via local environment you can simply run:
-```bash
-cd analytics-setup
-make restore
-```
+#### Namespace
+A namespace is a string that will be postifxed to elassticsearch indexes.
+This allows to configure multiple kibana instances against the same elasticsearch instance on the same server without collisions.
+For example, if you use the namespace _foo_, this will configure in order:
 
-Just browse to `http://localhost:5601` to see the configured dashboard.
-
-At this point the dashboard will still be empty.
-If you want to populate it with data you might want to run the [GIT commits ETL](https://github.com/GerritCodeReview/apps_analytics-etl#git-commits)
+* an elasticsearch index named gitcommitsfoo
+* a kibana dashboard named .kibanafoo
 
 ## Dump kibana configuration
 
 If you make some changes to kibana and you want to dump them on disk for later use you can
 just run:
 
-```make dump [ELASTICSEARCH_URL] [ELASTICSEARCH_PORT]```
+```make dump [ELASTICSEARCH_URL] [ELASTICSEARCH_PORT] [NAMESPACE]```
 
 * ELASTICSEARCH_URL: default is `http://host.docker.internal` (the current host running docker)
 * ELASTICSEARCH_PORT: default is 9200
+* NAMESPACE: default is empty string
 
 For example to dump the configuration of kibana spinned up via local environment you can simply run:
 ```bash

@@ -16,30 +16,36 @@
 
 /wait-for-elasticsearch
 
-echo "* * * * Create elasticsearch indexes @ $ELASTICSEARCH_URL:$ELASTICSEARCH_PORT * * * *"
+ES_URL="$ELASTICSEARCH_URL:$ELASTICSEARCH_PORT"
+
+echo "* * * * Create elasticsearch indexes @ $ES_URL * * * *"
 for file in `ls -v /elasticsearch-config/*.json`; do
 	echo "--> $file";
-	index_template_name=$(basename $file .json)
+
+	index_template_name=$(basename $file .json)$NAMESPACE
 	index_name="${index_template_name}_initial"
-	curl -X PUT -v -H 'Content-Type: application/json' \
-        -d @$file $ELASTICSEARCH_URL:$ELASTICSEARCH_PORT/_template/$index_template_name
+
+	echo "* * * Creating $index_template_name index template"
+	curl -X PUT -v -H 'Content-Type: application/json' -d @${file} ${ES_URL}/_template/${index_template_name}
 
 	echo "* * * * Creating $index_name index * * * *"
-	curl -XPUT "$ELASTICSEARCH_URL:$ELASTICSEARCH_PORT/$index_name?pretty" -H 'Content-Type: application/json'
+	curl -XPUT "$ES_URL/$index_name?pretty" -H 'Content-Type: application/json'
 
-    curl -XPOST "$ELASTICSEARCH_URL:$ELASTICSEARCH_PORT/_aliases" -H 'Content-Type: application/json' -d"{\"actions\" : [
+    echo "* * * * Creating alias $index_template_name -> $index_name index * * * *"
+    curl -XPOST "$ES_URL/_aliases" -H 'Content-Type: application/json' -d"{\"actions\" : [
             { \"add\" : { \"index\" : \"$index_name\", \"alias\" : \"$index_template_name\" } }
         ]
     }"
 
 done;
 
-echo "* * * * Input kibana settings @ $ELASTICSEARCH_URL:$ELASTICSEARCH_PORT * * * *"
+echo "* * * * Input kibana settings and visualizations @ $ES_URL [.kibana$NAMESPACE] * * * *"
 for file in `ls -v /kibana-config/*.data.json`; do
        echo "--> $file";
         /usr/lib/node_modules/elasticdump/bin/elasticdump \
-            --output=$ELASTICSEARCH_URL:$ELASTICSEARCH_PORT/.kibana \
+		--output=$ES_URL/.kibana$NAMESPACE \
             --input=$file \
             --type=data \
             --headers '{"Content-Type": "application/json"}';
+        echo "Done with $file";
 done;

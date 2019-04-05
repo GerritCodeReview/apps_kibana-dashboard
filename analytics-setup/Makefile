@@ -17,6 +17,7 @@ DUMPER_IMG = taskrabbit/elasticsearch-dump
 
 ELASTICSEARCH_URL=http://host.docker.internal
 ELASTICSEARCH_PORT=9200
+NAMESPACE=""
 
 .PHONY: build restore
 
@@ -26,13 +27,15 @@ restore: build
 	docker run --rm -it \
 		-e ELASTICSEARCH_URL=$(ELASTICSEARCH_URL) \
 		-e ELASTICSEARCH_PORT=$(ELASTICSEARCH_PORT) \
+		-e NAMESPACE=$(NAMESPACE) \
 		$(RESTORER_IMG)
 dump: build
 	docker run --rm -it \
 	        -e ELASTICSEARCH_URL=$(ELASTICSEARCH_URL) \
 		-e ELASTICSEARCH_PORT=$(ELASTICSEARCH_PORT) \
+		-e NAMESPACE=$(NAMESPACE) \
                 $(DUMPER_IMG) \
-		--input='$(ELASTICSEARCH_URL):$(ELASTICSEARCH_PORT)/.kibana' \
+		--input='$(ELASTICSEARCH_URL):$(ELASTICSEARCH_PORT)/.kibana$(NAMESPACE)' \
 		--output=$$ \
 		--type=data \
 	> ./kibana-config/analytics-settings-dashboards-visualizations.data.json
