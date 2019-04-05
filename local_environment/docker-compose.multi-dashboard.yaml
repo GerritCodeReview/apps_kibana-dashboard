@@ -3,7 +3,7 @@ services:
 
   kibana:
     image: gerritforge/analytics-kibana-6.5.4
-    container_name: "analytics-kibana-6.5.4"
+    container_name: "analytics-kibana-multi_a-6.5.4"
     networks:
       - analytics
     depends_on:
@@ -27,9 +27,9 @@ services:
       - "9200:9200"
       - "9300:9300"
 
-  setup:
+  setup_dashboard_a:
     build: analytics-setup
-    container_name: "analytics-setup-for-6.5.4"
+    container_name: "analytics-setup-dashboard_a-for-6.5.4"
     depends_on:
       - elasticsearch
     networks:
@@ -37,7 +37,19 @@ services:
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch
       - ELASTICSEARCH_PORT=9200
-      - NAMESPACE=localenv
+      - NAMESPACE=dashboard_a
+
+  setup_dashboard_b:
+    build: analytics-setup
+    container_name: "analytics-setup-dashboard_b-for-6.5.4"
+    depends_on:
+      - elasticsearch
+    networks:
+      - analytics
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - NAMESPACE=dashboard_b
 
 networks:
   analytics:
