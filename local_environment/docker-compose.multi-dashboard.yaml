@@ -1,18 +1,31 @@
 version: '3'
 services:
 
-  kibana:
+  kibana_multi_a:
     image: gerritforge/analytics-kibana-6.5.4
-    container_name: "analytics-kibana-6.5.4"
+    container_name: "analytics-kibana-multi_a-6.5.4"
     networks:
       - analytics
     environment:
-      - KIBANA_INDEX=.kibanalocalenv
+      - KIBANA_INDEX=.kibanamulti_a
       - SERVER_PORT=5601
     depends_on:
       - elasticsearch
     ports:
       - "5601:5601"
+
+  kibana_multi_b:
+    image: gerritforge/analytics-kibana-6.5.4
+    container_name: "analytics-kibana-multi_b-6.5.4"
+    networks:
+      - analytics
+    environment:
+      - KIBANA_INDEX=.kibanamulti_b
+      - SERVER_PORT=5602
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5602:5602"
 
   elasticsearch:
     build: elasticsearch
@@ -30,9 +43,9 @@ services:
       - "9200:9200"
       - "9300:9300"
 
-  setup:
+  setup_multi_a:
     build: analytics-setup
-    container_name: "analytics-setup-for-6.5.4"
+    container_name: "analytics-setup-multi_a-for-6.5.4"
     depends_on:
       - elasticsearch
     networks:
@@ -40,7 +53,19 @@ services:
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch
       - ELASTICSEARCH_PORT=9200
-      - NAMESPACE=localenv
+      - NAMESPACE=multi_a
+
+  setup_multi_b:
+    build: analytics-setup
+    container_name: "analytics-setup-multi_b-for-6.5.4"
+    depends_on:
+      - elasticsearch
+    networks:
+      - analytics
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch
+      - ELASTICSEARCH_PORT=9200
+      - NAMESPACE=multi_b
 
 networks:
   analytics:
