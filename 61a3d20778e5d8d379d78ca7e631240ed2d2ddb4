@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7040dde9_38ff62f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-04-05T17:40:20Z",
+      "side": 1,
+      "message": "To limit the visibility of some ES indices, wouldn\u0027t be enough to set up index patterns that match the $NAMESPACE + aliases names as part of the regex?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
