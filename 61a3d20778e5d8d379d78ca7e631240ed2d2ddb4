@@ -22,6 +22,30 @@
       "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afd5bf4_224d35b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1072905
+      },
+      "writtenOn": "2019-04-08T19:15:01Z",
+      "side": 1,
+      "message": "I don\u0027t think so, index patterns are helpful to _associate_ a kibana dashboard to a (set of) elasticsearch indexes, but I won\u0027t prevent anyone from exploring the existence of other indexes and possibly get data from it.\nThat needs to be addressed separately by using some authz layer (opendistro haproxy, etc)",
+      "parentUuid": "7040dde9_38ff62f0",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
