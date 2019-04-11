@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "de4c73d2_5a8be97e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006192
+      },
+      "writtenOn": "2019-04-11T09:45:54Z",
+      "side": 1,
+      "message": "Looking at the Docker compose file, it seems more that you have multiple kibana instances, not dashboards.",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7040dde9_38ff62f0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
