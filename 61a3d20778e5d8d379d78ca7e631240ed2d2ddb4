@@ -69,6 +69,167 @@
       "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "824530a0_ac9c8e0e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-04-11T09:53:51Z",
+      "side": 1,
+      "message": "nit: remove whitespace",
+      "range": {
+        "startLine": 28,
+        "startChar": 120,
+        "endLine": 28,
+        "endChar": 122
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2e9056_6ea5bf40",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-04-11T09:53:51Z",
+      "side": 1,
+      "message": "nit: remove whitespace",
+      "range": {
+        "startLine": 29,
+        "startChar": 48,
+        "endLine": 29,
+        "endChar": 50
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad3bef3_036dbfe2",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-04-11T09:53:51Z",
+      "side": 1,
+      "message": "you mean single elasticsearch and multiple kibana instances?",
+      "range": {
+        "startLine": 51,
+        "startChar": 51,
+        "endLine": 51,
+        "endChar": 73
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3852ba52_0c9c9cb4",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-04-11T09:53:51Z",
+      "side": 1,
+      "message": "from the code, the namespace seems to be a postfix instead",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d950e2_f076ed42",
+        "filename": "local_environment/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-04-11T09:53:51Z",
+      "side": 1,
+      "message": "nit: remove whitespace",
+      "range": {
+        "startLine": 18,
+        "startChar": 120,
+        "endLine": 18,
+        "endChar": 122
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d6cf42_5a852b79",
+        "filename": "local_environment/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-04-11T09:53:51Z",
+      "side": 1,
+      "message": "Multiple kibana instances, each with multiple dashboards",
+      "range": {
+        "startLine": 23,
+        "startChar": 78,
+        "endLine": 23,
+        "endChar": 104
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8392228e_bf1750ed",
+        "filename": "local_environment/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1065251
+      },
+      "writtenOn": "2019-04-11T09:53:51Z",
+      "side": 1,
+      "message": "nit: remove whitespace",
+      "range": {
+        "startLine": 23,
+        "startChar": 116,
+        "endLine": 23,
+        "endChar": 120
+      },
+      "revId": "61a3d20778e5d8d379d78ca7e631240ed2d2ddb4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
